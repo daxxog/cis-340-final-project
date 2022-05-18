@@ -1,0 +1,43 @@
+<app-user-toolbar *ngIf="!printing"></app-user-toolbar>
+<div class="row" *ngIf="!printing">
+    <div class="four columns">
+        <h3>Invoice Finder</h3>
+    </div>
+    <div class="four columns">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter time period to view invoices for</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker" [dateFilter]="dateFilter">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+    </div>
+    <div class="four columns">
+        <button class="skeleton button-primary" (click)="find()" *ngIf="canSubmit">Find Invoices</button>
+    </div>
+</div>
+<div class="row" *ngIf="!printing">
+    <div class="four columns">
+        &nbsp;
+    </div>
+    <div class="four columns" *ngIf="empty">
+        <p>
+            <i>No invoices found for selected date range.</i>
+        </p>
+    </div>
+    <div class="four columns">
+        &nbsp;
+    </div>
+    <div class="four columns" *ngIf="!empty && didSubmit">
+        <button class="skeleton" (click)="print()">Print</button>
+    </div>
+</div>
+<div class="row" *ngFor="let invoice of invoices">
+<hr>
+    <pre>
+        {{invoice.body}}
+    </pre>
+</div>

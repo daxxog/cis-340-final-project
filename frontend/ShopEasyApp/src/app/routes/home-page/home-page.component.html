@@ -1,0 +1,10 @@
+<app-user-toolbar></app-user-toolbar>
+<div class="row">
+    <div class="four columns">
+        <h3>Product Search</h3>
+    </div>
+    <div class="eight columns">
+        <input type="text" class="skeleton u-full-width" placeholder="Search" [(ngModel)]="searchVal" #search/>
+    </div>
+</div>
+<app-display-product *ngFor="let product of products" [product]="product"></app-display-product>

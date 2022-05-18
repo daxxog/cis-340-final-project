@@ -1,0 +1,87 @@
+<app-admin-toolbar></app-admin-toolbar>
+<div class="row">
+    <div class="four columns">
+        <h3>Products</h3>
+    </div>
+    <div class="four columns">
+        <input type="text" class="skeleton u-full-width" placeholder="Search" [(ngModel)]="searchVal" #search/>
+    </div>
+    <div class="four columns">
+        <button class="skeleton button-primary" *ngIf="!showCreateInterface" (click)="openCreateInterface()">New Product</button>
+    </div>
+</div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="showCreateInterface">
+    <div class="row">
+        <div class="five columns">
+            <p>
+                <b><i>New Product</i></b>
+            </p>
+        </div>
+        <div class="five columns">
+            &nbsp;
+        </div>
+        <div class="two columns">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="one columns">
+            &nbsp;
+        </div>
+        <div class="five columns">
+            <label for="name">Product name:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newProduct.name" name="name">
+        </div>
+        <div class="six columns">
+            <label for="description">Product description:</label> <br>
+            <textarea class="skeleton u-full-width" [(ngModel)]="newProduct.description" name="description"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="three columns">
+            <label for="productTypes">Product type:</label> <br>
+            <app-product-type-selector [product]="newProduct"></app-product-type-selector>
+        </div>
+        <div class="three columns">
+            <label for="clothingCategories" *ngIf="newProductIsClothing">Clothing category:</label> <br>
+            <app-clothing-category-selector *ngIf="newProductIsClothing" [product]="newProduct"></app-clothing-category-selector>
+        </div>
+        <div class="four columns">
+            <label for="price">Product price:</label> <br>
+            <app-manage-product-price-input [product]="newProduct"></app-manage-product-price-input>
+        </div>
+        <div class="two columns">
+            <p>
+                <button *ngIf="!creating" class="skeleton" (click)="resetCreate()">Cancel</button>
+            </p>
+            <p>
+                <button type="submit" value="update" *ngIf="canCreate" class="button-primary skeleton">Create</button>
+            </p>
+        </div>
+    </div>
+</form>
+<div class="row" *ngIf="loading">
+    <div class="eight columns">
+        <h5>Loading . .</h5>
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+</div>
+<hr *ngIf="empty">
+<div class="row" *ngIf="empty">
+    <div class="eight columns">
+        <h5>No Products Found</h5>
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+</div>
+<app-manage-product *ngFor="let product of products" [product]="product"></app-manage-product>
+<hr>

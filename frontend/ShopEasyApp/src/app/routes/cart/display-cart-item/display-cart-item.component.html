@@ -1,0 +1,19 @@
+<hr>
+<div class="row">
+    <div class="six columns">
+        <h3>{{name}}</h3>
+    </div>
+    <div class="two columns">
+        <p>
+            Quantity: {{quantity}}
+        </p>
+    </div>
+    <div class="two columns">
+        <p class="price">
+            {{subtotal}}
+        </p>
+    </div>
+    <div class="two columns">
+        <button (click)="removeFromCart()" class="skeleton button-delete">Remove</button>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<label for="username">Username:</label> <br>
+<p *ngIf="!usernameIsValid">
+Username is not valid! This is probably because a customer with this username is already in the database.
+</p>
+<input type="text" class="{{inputClasses}}" [(ngModel)]="username" name="username">

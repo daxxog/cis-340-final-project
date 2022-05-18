@@ -1,0 +1,7 @@
+<button *ngIf="!askAreYouSure && !deleting" (click)="doAskAreYouSure()" value="delete" class="button-primary skeleton button-delete">Delete</button>
+<div *ngIf="askAreYouSure && !deleting">
+    <b>Are you sure you want to delete "{{username}}" from the database?</b> <br>
+
+    <button *ngIf="askAreYouSure" (click)="doDelete()" value="delete" class="skeleton button-delete">Continue</button>
+    <button *ngIf="askAreYouSure" (click)="cancelDelete()" value="delete" class="button-primary skeleton">Cancel</button>
+</div>

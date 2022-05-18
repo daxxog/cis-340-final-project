@@ -1,0 +1,95 @@
+<app-admin-toolbar></app-admin-toolbar>
+<div class="row">
+    <div class="four columns">
+        <h3>Customers</h3>
+    </div>
+    <div class="four columns">
+        <input type="text" class="skeleton u-full-width" placeholder="Search" [(ngModel)]="searchVal" #search/>
+    </div>
+    <div class="four columns">
+        <button class="skeleton button-primary" *ngIf="!showCreateInterface" (click)="openCreateInterface()">New Customer</button>
+    </div>
+</div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="showCreateInterface">
+    <div class="row">
+        <div class="five columns">
+            <b><i>New Customer</i></b>
+        </div>
+        <div class="five columns">
+            &nbsp;
+        </div>
+        <div class="two columns">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns">
+            <label for="firstName">First name:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newCustomer.firstName" name="firstName">
+        </div>
+        <div class="four columns">
+            <label for="lastName">Last name:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newCustomer.lastName" name="lastName">
+        </div>
+        <div class="four columns">
+            <label for="phoneNumber">Phone number:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newCustomer.phoneNumber" name="phoneNumber">
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns">
+            <label for="emailAddress">Email Address:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newCustomer.emailAddress" name="emailAddress">
+        </div>
+        <div class="four columns">
+            <app-manage-customer-username-input [newUser]="newCustomerNewUser"></app-manage-customer-username-input>
+        </div>
+        <div class="four columns">
+            <label for="lastName">Password:</label> <br>
+            <input type="text" class="skeleton u-full-width" [(ngModel)]="newCustomerPassword" name="password">
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns">
+            <label for="customerTypes">Customer type:</label> <br>
+            <app-customer-type-selector [customer]="newCustomer"></app-customer-type-selector>
+        </div>
+        <div class="six columns">
+            <label for="responsibleParties">Responsible party:</label> <br>
+            <app-responsible-party-selector [customer]="newCustomer"></app-responsible-party-selector>
+        </div>
+        <div class="two columns">
+            <p>
+                <button *ngIf="!creating" class="skeleton" (click)="resetCreate()">Cancel</button>
+            </p>
+            <p>
+                <button type="submit" value="update" *ngIf="canCreate" class="button-primary skeleton">Create</button>
+            </p>
+        </div>
+    </div>
+</form>
+<div class="row" *ngIf="loading">
+    <div class="eight columns">
+        <h5>Loading . .</h5>
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+</div>
+<hr *ngIf="empty">
+<div class="row" *ngIf="empty">
+    <div class="eight columns">
+        <h5>No Customers Found</h5>
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+    <div class="two columns">
+        &nbsp;
+    </div>
+</div>
+<app-manage-customer *ngFor="let customer of customers" [customer]="customer"></app-manage-customer>
+<hr>

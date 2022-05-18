@@ -1,0 +1,46 @@
+<hr>
+<div class="row">
+    <div class="four columns">
+        <label for="firstName">First name:</label> <br>
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="firstName" name="firstName">
+    </div>
+    <div class="four columns">
+        <label for="lastName">Last name:</label> <br>
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="lastName" name="lastName">
+    </div>
+    <div class="four columns">
+        <label for="phoneNumber">Phone number:</label> <br>
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="phoneNumber" name="phoneNumber">
+    </div>
+</div>
+<div class="row">
+    <div class="four columns">
+        <label for="emailAddress">Email Address:</label> <br>
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="emailAddress" name="emailAddress">
+    </div>
+    <div class="four columns">
+        <label for="username">Username:</label> <br>
+        <input type="text" class="skeleton u-full-width input-ro" [(ngModel)]="username" name="username" readonly>
+    </div>
+    <div class="four columns">
+        <app-manage-customer-reset-password-button [updateUser]="customerUpdateUser"></app-manage-customer-reset-password-button>
+    </div>
+</div>
+<div class="row">
+    <div class="four columns">
+        <label for="customerTypes">Customer type:</label> <br>
+        <app-customer-type-selector [customer]="updatedCustomer"></app-customer-type-selector>
+    </div>
+    <div class="six columns">
+        <label for="responsibleParties">Responsible party:</label> <br>
+        <app-responsible-party-selector [customer]="updatedCustomer"></app-responsible-party-selector>
+    </div>
+    <div class="two columns">
+        <p>
+            <app-manage-customer-delete-button [username]="username"></app-manage-customer-delete-button>
+        </p>
+        <p>
+            <button value="update" *ngIf="canUpdate" class="button-primary skeleton" (click)="doUpdateUser()">Update</button>
+        </p>
+    </div>
+</div>

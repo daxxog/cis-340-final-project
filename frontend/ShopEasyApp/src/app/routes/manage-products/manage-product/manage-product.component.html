@@ -1,0 +1,36 @@
+<hr>
+<div class="row">
+    <div class="one columns">
+        <p><b>{{id}}</b></p>
+    </div>
+    <div class="five columns">
+        <label for="name">Product name:</label> <br>
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="name" name="name">
+    </div>
+    <div class="six columns">
+        <label for="description">Product description:</label> <br>
+        <textarea class="skeleton u-full-width" [(ngModel)]="description" name="description"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="three columns">
+        <label for="productTypes">Product type:</label> <br>
+        <app-product-type-selector [product]="updatedProduct"></app-product-type-selector>
+    </div>
+    <div class="three columns">
+        <label for="clothingCategories" *ngIf="isClothing">Clothing category:</label> <br>
+        <app-clothing-category-selector *ngIf="isClothing" [product]="updatedProduct"></app-clothing-category-selector>
+    </div>
+    <div class="four columns">
+        <label for="price">Product price:</label> <br>
+        <app-manage-product-price-input [product]="updatedProduct"></app-manage-product-price-input>
+    </div>
+    <div class="two columns">
+        <p>
+            <app-manage-product-delete-button [product]="product"></app-manage-product-delete-button>
+        </p>
+        <p>
+            <button value="update" *ngIf="canUpdate" class="button-primary skeleton" (click)="doUpdateProduct()">Update</button>
+        </p>
+    </div>
+</div>

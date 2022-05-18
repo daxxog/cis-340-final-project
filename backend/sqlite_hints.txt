@@ -1,0 +1,4 @@
+# sqlite3
+sqlite> .open shop_easy.db
+sqlite> .read database_structure.sql
+sqlite> .quit

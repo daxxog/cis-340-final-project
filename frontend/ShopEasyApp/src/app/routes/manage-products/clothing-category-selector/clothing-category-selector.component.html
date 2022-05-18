@@ -1,0 +1,3 @@
+<select id="clothingCategories" [(ngModel)]="clothingCategoryId">
+<option *ngFor="let clothingCategory of clothingCategories" value="{{clothingCategory.id}}">{{clothingCategory.name}}</option>
+</select>

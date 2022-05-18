@@ -1,0 +1,9 @@
+<p *ngIf="inCart">
+    <b>Item is in <a routerLink="/cart" routerLinkActive="active">cart</a></b> <br>
+    Quantity: {{inCartQuantity}}
+</p>
+<button *ngIf="!inCart && !askingQuantity " class="skeleton button-primary" (click)="askQuantity()">Add to Cart</button>
+<label *ngIf="askingQuantity" for="quantity">Quantity:</label> <br>
+<input *ngIf="askingQuantity" name="quantity" type="text" class="skeleton quantity" [(ngModel)]="quantityVal" #quantity />
+<button *ngIf="askingQuantity && canAddToCart" class="skeleton button-primary add-button" (click)="addToCart()">Add</button>
+<button *ngIf="askingQuantity" class="skeleton" (click)="cancelAsk()">Cancel</button>

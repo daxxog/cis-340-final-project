@@ -1,0 +1,3 @@
+<p>Logged in as: {{username}} <br>
+<a *ngIf="isUser && !onInvoices" routerLink="/invoices" routerLinkActive="active">View invoices</a></p>
+<button class="skeleton" (click)="logout()">Logout</button>

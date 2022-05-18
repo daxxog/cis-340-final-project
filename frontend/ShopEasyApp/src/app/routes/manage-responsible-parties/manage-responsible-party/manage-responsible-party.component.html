@@ -1,0 +1,14 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <hr>
+    <div class="row">
+        <div class="one columns">
+            <b>{{id}}</b>
+        </div>
+        <div class="nine columns">
+        <input type="text" class="skeleton u-full-width" [(ngModel)]="name" name="name">
+        </div>
+        <div class="two columns">
+            <button type="submit" value="update" *ngIf="changed" class="button-primary skeleton">Update</button>
+        </div>
+    </div>
+</form>

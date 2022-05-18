@@ -1,0 +1,5 @@
+<div *ngIf="!editing">
+    <button class="skeleton edit" (click)="edit()">{{priceDollars}}{{priceCents}}</button> <br>
+</div>
+<input *ngIf="editing" type="text" class="skeleton dollars" [(ngModel)]="priceDollars" name="price" #dollars>
+<input *ngIf="editing" type="text" class="skeleton cents" [(ngModel)]="priceCents" name="price">

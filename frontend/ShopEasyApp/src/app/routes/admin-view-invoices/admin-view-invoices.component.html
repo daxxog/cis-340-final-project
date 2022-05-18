@@ -1,0 +1,16 @@
+<app-admin-toolbar *ngIf="!printing"></app-admin-toolbar>
+<div class="row" *ngIf="!printing">
+    <div class="eight columns">
+        <h3>Invoices</h3>
+    </div>
+    <div class="four columns">
+        <button class="skeleton" (click)="print()">Print</button>
+    </div>
+</div>
+<hr>
+<div class="row" *ngFor="let invoice of invoices">
+    <pre>
+        {{invoice.body}}
+    </pre>
+<hr>
+</div>

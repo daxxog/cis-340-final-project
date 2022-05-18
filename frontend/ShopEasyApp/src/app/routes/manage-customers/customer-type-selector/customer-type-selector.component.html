@@ -1,0 +1,3 @@
+<select id="customerTypes" [(ngModel)]="customerTypeId">
+<option *ngFor="let customerType of customerTypes" value="{{customerType.id}}">{{customerType.name}}</option>
+</select>
